@@ -1,0 +1,27 @@
+name: Simple Shell Script Lab
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-scripts:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Get the code
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      # Step 2: Make script executable
+      - name: Make script executable
+        run: chmod +x scripts/greet.sh
+      
+      # Step 3: Run shell script from file
+      - name: Run greeting script
+        run: ./scripts/greet.sh
+      
+      # Step 4: Run inline shell commands
+      - name: Run inline greeting
+        run: |
+          echo "Hello World!"
+          echo "This is an inline script"
